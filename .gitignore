@@ -6,13 +6,6 @@ frontend/dist/
 # ================= BACKEND =================
 DGClinic_backend/target/
 DGClinic_backend/*.log
-
-# ================= ENV FILES =================
-.env
-*.env
-application.properties
-application.yml
-
 # ================= IDE =================
 .idea/
 .vscode/
