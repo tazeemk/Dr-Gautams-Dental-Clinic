@@ -1,0 +1,92 @@
+/* Page wrapper */
+.profile_section {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #e8f5e9, #ffffff);
+  padding: 30px 15px;
+  overflow-x: hidden;
+}
+
+/* Loading & Error text */
+.loading_text {
+  text-align: center;
+  margin-top: 100px;
+  color: #2e7d32;
+}
+
+.error_text {
+  text-align: center;
+  margin-top: 100px;
+  color: #c62828;
+}
+
+/* Card container */
+.user_data_container {
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  flex-wrap: wrap;
+  gap: 20px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+/* Profile card */
+.data_values {
+  width: 360px;
+  min-height: 230px;
+  padding: 22px;
+  border-radius: 16px;
+
+  background: #ffffff;
+  border-left: 6px solid #2e7d32;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  transition: all 0.3s ease;
+}
+
+.data_values:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.18);
+}
+
+/* Text */
+.data_values p {
+  margin: 6px 0;
+  font-size: 16px;
+}
+
+.data_values span {
+  font-weight: 600;
+}
+
+/* Colors */
+.your_name {
+  color: #1565c0;
+}
+
+.your_email {
+  color: #6a1b9a;
+}
+
+.your_phone {
+  color: #ef6c00;
+}
+
+.your_date {
+  color: #2e7d32;
+}
+
+.your_time {
+  color: #c62828;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .data_values {
+    width: 100%;
+  }
+}
