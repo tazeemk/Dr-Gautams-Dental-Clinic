@@ -6,9 +6,10 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import './Login.css';
 import Spinner from '../Components/Spinner';
+import { properties } from './properties';
 const Login = () => {
   // const url = "http://localhost:5000/login_user";
-  const url = 'http://localhost:9090/user/login';
+  const url = properties.url+'/user/login';
   const navigate = useNavigate();
 
   const [loader, setLoader] = useState('none');

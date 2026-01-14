@@ -6,10 +6,11 @@ import './BookingHours.css';
 import { ToastContainer, toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 import Spinner from '../Components/Spinner';
+import { properties } from './properties';
 
 const BookingHours = () => {
-  const SLOT_API = 'http://localhost:9090/bookingSlot/slots';
-  const BOOK_API = 'http://localhost:9090/appointment/addAppointment';
+  const SLOT_API = properties.url+'/bookingSlot/slots';
+  const BOOK_API = properties.url+'/appointment/addAppointment';
 
   const navigate = useNavigate();
 

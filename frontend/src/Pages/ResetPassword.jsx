@@ -4,6 +4,7 @@ import "./ResetPassword.css";
 import "react-toastify/dist/ReactToastify.css";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
+import { properties } from "./properties";
 export function ResetPassword() {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
@@ -51,7 +52,7 @@ export function ResetPassword() {
       setLoading(true);
 
       // 👉 CHANGE API URL AS PER BACKEND
-      await axios.post("http://localhost:9090/user/resetPassword", {
+      await axios.post(properties.url+"/user/resetPassword", {
         email: formData.email,
         password: formData.password,
         confirmPassword: formData.confirmPassword,

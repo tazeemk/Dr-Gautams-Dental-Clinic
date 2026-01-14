@@ -7,9 +7,11 @@ import "react-toastify/dist/ReactToastify.css";
 import "./Register.css";
 import Spinner from "../Components/Spinner";
 import axios from "axios";
+import { propTypes } from "react-bootstrap/esm/Image";
+import { properties } from "./properties";
 
 const Register = () => {
-  const url = "http://localhost:9090/user/register";
+  const url = properties.url+"/user/register";
   const navigate = useNavigate();
 
   const [loading, setLoading] = useState(false);

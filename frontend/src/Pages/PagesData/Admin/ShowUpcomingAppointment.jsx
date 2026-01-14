@@ -13,7 +13,7 @@ const ShowUpcomingAppointment = () => {
             try {
                 setLoading(true);
                 // Fixed: Added 'await' before axios.get()
-                const response = await axios.get("http://localhost:9090/showAppointment/upcomingAppointment");
+                const response = await axios.get("https://dr-gautams-dental-clinic-backend.onrender.com/showAppointment/upcomingAppointment");
                 setUpcomingAppointments(response.data);
                 console.log("Upcoming appointments data:", response.data);
                 console.log("Upcoming appointments fetched successfully!");
@@ -33,7 +33,7 @@ const ShowUpcomingAppointment = () => {
         if (window.confirm('Are you sure you want to delete this upcoming appointment?')) {
             try {
                 // Use the same delete endpoint as your other appointment component
-                const deleteUrl = `http://localhost:9090/showAppointment/remove/${appointmentId}`;
+                const deleteUrl = `https://dr-gautams-dental-clinic-backend.onrender.com/showAppointment/remove/${appointmentId}`;
                 console.log("Deleting Upcoming Appointment:", deleteUrl);
                 
                 await axios.delete(deleteUrl);

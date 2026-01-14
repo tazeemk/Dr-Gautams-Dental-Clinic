@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { properties } from '../../properties';
 
 const ShowUser = () => {
     const [users, setUsers] = useState([]);
@@ -10,7 +11,7 @@ const ShowUser = () => {
         const fetchUsers = async () => {
             try {
                 setLoading(true);
-                const response = await fetch("http://localhost:9090/user/showAllUser");
+                const response = await fetch(properties.url+"/user/showAllUser");
                 
                 if (!response.ok) {
                     throw new Error(`HTTP error! status: ${response.status}`);

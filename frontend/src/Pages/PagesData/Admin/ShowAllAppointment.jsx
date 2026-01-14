@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { properties } from "../../properties";
 
 const ShowAllAppointment = () => {
     const [appointments, setAppointments] = useState([]);
@@ -11,7 +12,7 @@ const ShowAllAppointment = () => {
         const fetchAppointments = async () => {
             try {
                 setLoading(true);
-                const response = await axios.get("http://localhost:9090/showAppointment/All");
+                const response = await axios.get(properties.url+"/showAppointment/All");
                 console.log(response.data);
                 
                 // Set the appointments data
@@ -31,7 +32,7 @@ const ShowAllAppointment = () => {
     const handleDelete = async (appointmentId) => {
         if (window.confirm('Are you sure you want to delete this appointment?')) {
             // Fixed URL construction
-            const deleteUrl = `http://localhost:9090/showAppointment/remove/${appointmentId}`;
+            const deleteUrl = properties.url+`/showAppointment/remove/${appointmentId}`;
             console.log("Deleting Appointment:", deleteUrl);
             
             try {
