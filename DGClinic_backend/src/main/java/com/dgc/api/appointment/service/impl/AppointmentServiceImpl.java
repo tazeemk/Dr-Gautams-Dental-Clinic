@@ -44,7 +44,6 @@ public class AppointmentServiceImpl implements IAppointmentService {
 	@Override
 	public void sendAppointmentMail(String toEmail, String patientName, String date, String time, String description) {
 		 SimpleMailMessage message = new SimpleMailMessage();
-		    message.setFrom("tazeem.java121@gmail.com");
 	        message.setTo(toEmail);
 	        message.setSubject("Appointment Confirmation - Dental Clinic");
 
