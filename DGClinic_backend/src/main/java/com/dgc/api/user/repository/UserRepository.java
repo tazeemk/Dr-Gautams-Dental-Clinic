@@ -16,26 +16,25 @@ public interface UserRepository extends JpaRepository<UserEntity, Integer>
 
    public UserEntity findByemail(String email);
    
-   @Query(value = "SELECT a.id,a.appointment_date as appointmentDate, " +
-           "a.description as description, " +
-           "a.time as time, " +
-           "a.booking_timing as bookingTiming, " +
-           "u.user_name as userName, " +
-           "u.email as email, " +
-           "u.mobile_number as mobileNumber, " +
-           "u.user_address as userAddress " +
-           "FROM dgclinic.dc_appointment a " +
-           "JOIN dgclinic.dgc_users u ON a.user_id = u.user_id", 
-      nativeQuery = true)
+  @Query(value = "SELECT a.id,a.appointment_date as appointmentDate, " +
+        "a.description as description, " +
+        "a.time as time, " +
+        "a.booking_timing as bookingTiming, " +
+        "u.user_name as userName, " +
+        "u.email as email, " +
+        "u.mobile_number as mobileNumber, " +
+        "u.user_address as userAddress " +
+        "FROM dc_appointment a " +
+        "JOIN dgc_users u ON a.user_id = u.user_id",
+        nativeQuery = true)
     List<ShowAppointmentBean> getAllAppontment();
    
    
-    @Query(value="SELECT a.*, u.*\r\n" + 
-   		"FROM dgclinic.dc_appointment a\r\n" + 
-   		"JOIN dgclinic.dgc_users u \r\n" + 
-   		"    ON a.user_id = u.user_id\r\n" + 
-   		"WHERE STR_TO_DATE(CONCAT(a.appointment_date, ' ', a.time), '%Y-%m-%d %h:%i %p') >= NOW();"
-   		,nativeQuery=true)
+   @Query(value = "SELECT a.*, u.* " +
+        "FROM dc_appointment a " +
+        "JOIN dgc_users u ON a.user_id = u.user_id " +
+        "WHERE STR_TO_DATE(CONCAT(a.appointment_date, ' ', a.time), '%Y-%m-%d %h:%i %p') >= NOW()",
+        nativeQuery = true)
      List<ShowAppointmentBean> getAllUpcomingAppointment();
 
     Optional<UserEntity> findByUserId(Integer id);
