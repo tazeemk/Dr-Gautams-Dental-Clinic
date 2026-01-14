@@ -11,8 +11,10 @@ public class ClinicConfig implements WebMvcConfigurer {
 	   @Override
 	    public void addCorsMappings(CorsRegistry registry) {
 	        registry.addMapping("/**")
-	                .allowedOrigins("http://localhost:3000")
-	                .allowedMethods("*")
+	                .allowedOrigins(
+                    "https://peppy-daffodil-6b0516.netlify.app"
+                )
+                .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
 	                .allowedHeaders("*")
 	                .allowCredentials(true);
 	    }
