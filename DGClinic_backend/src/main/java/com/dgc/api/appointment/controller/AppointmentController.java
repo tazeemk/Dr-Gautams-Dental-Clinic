@@ -42,7 +42,7 @@ public class AppointmentController {
 		
 		AppointmentEntity appointment = appointmentService.addAppointment(userId, entity);
 		
-		appointmentService.sendAppointmentMail(email, pName, bDate, slotTime, description);
+		//appointmentService.sendAppointmentMail(email, pName, bDate, slotTime, description);
 		return ResponseEntity.ok(appointment);
 		
 	}
