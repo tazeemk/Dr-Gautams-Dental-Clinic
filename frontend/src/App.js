@@ -18,7 +18,7 @@ import Dashboard from './Pages/PagesData/Admin/Dashboard';
 import ShowAllAppointment from './Pages/PagesData/Admin/ShowAllAppointment';
 import ShowUser from './Pages/PagesData/Admin/ShowUser';
 import ShowUpcomingAppointment from './Pages/PagesData/Admin/ShowUpcomingAppointment';
-
+import { ResetPassword } from './Pages/ResetPassword';
 const App = () => {
     // Add debugging for route changes
     React.useEffect(() => {
@@ -46,6 +46,7 @@ const App = () => {
                         </>
                     }
                 />
+                <Route path='/resetpassword' element={<ResetPassword />} />
                 <Route path="/dental-clinic/appointment" element={<Appointment />} />
                 <Route path="/register" element={<Register />} />
                 <Route path="/dental-clinic/team" element={<Profile />} />

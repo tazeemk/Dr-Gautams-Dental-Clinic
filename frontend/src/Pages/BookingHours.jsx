@@ -132,7 +132,7 @@ const BookingHours = () => {
       );
 
       if (res.status === 200) {
-        toast.success('Appointment booked');
+        toast.success('Appointment booked .Details sent to your email');
         setTimeout(() => navigate('/'), 3000);
       } else {
         toast.error('Booking failed');

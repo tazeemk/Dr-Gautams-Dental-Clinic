@@ -3,6 +3,7 @@ package com.dgc.api.user.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.dgc.api.dto.LoginRequest;
+import com.dgc.api.resetPassword.bean.ResetPasswordBean;
 import com.dgc.api.user.UserEntity;
 import com.dgc.api.user.service.IUserService;
 
@@ -42,4 +44,12 @@ public class UserController
     	   List<UserEntity>users=userService.showAllUser();
             return ResponseEntity.ok(users);
     }
+    
+    @PostMapping("/resetPassword")
+    public ResponseEntity<String> resetUserPasskey(@RequestBody ResetPasswordBean bean){
+    	
+    		String msg=userService.resetUserPassword(bean);
+    	    return ResponseEntity.ok(msg);
+    	
 }
+    }

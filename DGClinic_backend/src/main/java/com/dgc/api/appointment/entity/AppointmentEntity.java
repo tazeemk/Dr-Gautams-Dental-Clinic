@@ -5,6 +5,7 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 
 import com.dgc.api.user.UserEntity;
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -28,7 +29,8 @@ public class AppointmentEntity {
 
 	private String time;
 
-	private LocalTime bookingTiming;
+	@JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")
+	private LocalDateTime bookingTiming;
 
 	@ManyToOne
 	@JoinColumn(name = "user_id", nullable = false)
@@ -47,11 +49,11 @@ public class AppointmentEntity {
 		this.user = user;
 	}
 
-	public LocalTime getBookingTiming() {
+	public LocalDateTime getBookingTiming() {
 		return bookingTiming;
 	}
 
-	public void setBookingTiming(LocalTime bookingTiming) {
+	public void setBookingTiming(LocalDateTime bookingTiming) {
 		this.bookingTiming = bookingTiming;
 	}
 

@@ -2,6 +2,7 @@ package com.dgc.api.user.service;
 
 import java.util.List;
 
+import com.dgc.api.resetPassword.bean.ResetPasswordBean;
 import com.dgc.api.user.UserEntity;
 
 public interface IUserService 
@@ -13,5 +14,5 @@ public interface IUserService
 	
 	public List<UserEntity> showAllUser();
 	
-	
+	public String resetUserPassword(ResetPasswordBean bean);
 }

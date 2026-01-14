@@ -9,9 +9,11 @@ public interface ShowAppointmentBean {
     LocalDate getAppointmentDate();
     String getDescription();
     String getTime();
-    LocalTime getBookingTiming();
+    LocalDateTime getBookingTiming();
     String getUserName();
     String getEmail();
     String getMobileNumber();
     String getUserAddress();
+    
+    
 }

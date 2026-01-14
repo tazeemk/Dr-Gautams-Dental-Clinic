@@ -110,6 +110,9 @@ const Login = () => {
               Don't have an account ?
               <HashLink to={'/register'}>Register</HashLink>
             </span>
+            <span className="lower_title_login alert alert-success text-center mt-3">
+              <HashLink to={'/resetpassword'}>Forget PassWord</HashLink>
+            </span>
           </form>
         </div>
         <ToastContainer />

@@ -39,6 +39,8 @@ public interface UserRepository extends JpaRepository<UserEntity, Integer>
      List<ShowAppointmentBean> getAllUpcomingAppointment();
 
     Optional<UserEntity> findByUserId(Integer id);
+    
+    Optional<UserEntity> findByEmail(String  email);
    
 	
 }

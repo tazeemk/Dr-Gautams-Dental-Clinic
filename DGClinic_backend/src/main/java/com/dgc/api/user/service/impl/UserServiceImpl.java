@@ -1,10 +1,12 @@
 package com.dgc.api.user.service.impl;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.dgc.api.resetPassword.bean.ResetPasswordBean;
 import com.dgc.api.user.UserEntity;
 import com.dgc.api.user.repository.UserRepository;
 import com.dgc.api.user.service.IUserService;
@@ -18,7 +20,11 @@ public class UserServiceImpl implements IUserService
 	
 	@Override
 	public String addNewUsers(UserEntity user) {
-	
+	String userEmail = user.getEmail();
+	Optional<UserEntity>userCheck =userRepo.findByEmail(userEmail);
+	if(userCheck.isPresent()) {
+		throw new IllegalArgumentException("You already have an account with this email. Try logging in.");
+	}
 	if(user !=null) {
 		UserEntity user1 = new UserEntity();
 		   user1.setAppointments(user.getAppointments());
@@ -55,5 +61,18 @@ public class UserServiceImpl implements IUserService
 		return alluser;
 	}
 	
+	@Override
+	public String resetUserPassword(ResetPasswordBean bean) {
+		String email =bean.getEmail();
+		Optional<UserEntity>userCheck =userRepo.findByEmail(email);
+	if(userCheck.isEmpty()) {
+		throw new IllegalArgumentException("Email Not Found .Please Enter a Valid email");
+	}
+	UserEntity user = userCheck.get();
+	user.setPassword(bean.getPassword());
+	user.setConfirmPassword(bean.getConfirmPassword());
+	userRepo.save(user);
+	return "PassWord Change Successfully .";
+	}
 	
 }

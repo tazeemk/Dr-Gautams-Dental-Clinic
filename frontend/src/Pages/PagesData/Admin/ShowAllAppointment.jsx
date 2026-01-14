@@ -96,7 +96,10 @@ const ShowAllAppointment = () => {
             padding: '20px', 
             fontFamily: 'Arial, sans-serif',
             backgroundColor: '#f5f5f5',
-            minHeight: '100vh'
+            minHeight: '100vh',
+            display: 'flex', 
+            justifyContent: 'center', 
+            alignItems: 'center'
         }}>
             <div style={{ 
                 backgroundColor: 'white',
@@ -138,7 +141,8 @@ const ShowAllAppointment = () => {
                                 width: '100%',
                                 borderCollapse: 'collapse',
                                 backgroundColor: 'white',
-                                boxShadow: '0 4px 15px rgba(0,0,0,0.1)'
+                                boxShadow: '0 4px 15px rgba(0,0,0,0.1)',
+                                 fontSize: '14px'
                             }}>
                                 <thead>
                                     <tr style={{ 
@@ -188,6 +192,7 @@ const ShowAllAppointment = () => {
                                                 borderRight: '1px solid #eee', 
                                                 fontWeight: '600',
                                                 color: '#333'
+                                               
                                             }}>
                                                 {appointment.userName}
                                             </td>
@@ -203,8 +208,12 @@ const ShowAllAppointment = () => {
                                                 padding: '15px', 
                                                 borderRight: '1px solid #eee',
                                                 color: '#666'
-                                            }}>
-                                                {appointment.mobileNumber}
+                                                      }}>
+                                                 {appointment.mobileNumber
+                                        ? Number(appointment.mobileNumber).toLocaleString('en-IN', {
+                                              useGrouping: false
+                                                      })
+                                                      : 'N/A'}
                                             </td>
                                             <td style={{ 
                                                 padding: '15px', 
@@ -228,10 +237,9 @@ const ShowAllAppointment = () => {
                                                 fontSize: '12px', 
                                                 color: '#666'
                                             }}>
-                                                {appointment.bookingTiming ? 
-                                                    new Date(appointment.bookingTiming).toLocaleString() : 
-                                                    'N/A'
-                                                }
+  {appointment.bookingTiming
+  ? new Date(appointment.bookingTiming).toLocaleString()
+  : 'N/A'}
                                             </td>
                                             <td style={{ 
                                                 padding: '15px', 
@@ -267,7 +275,8 @@ const ShowAllAppointment = () => {
                                                         boxShadow: '0 2px 8px rgba(255, 82, 82, 0.3)',
                                                         display: 'inline-flex',
                                                         alignItems: 'center',
-                                                        gap: '5px'
+                                                        gap: '5px',
+                                                        fontSize: '13px'
                                                     }}
                                                     onMouseEnter={(e) => {
                                                         e.target.style.backgroundColor = '#d32f2f';

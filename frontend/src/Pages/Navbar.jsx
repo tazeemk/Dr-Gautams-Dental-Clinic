@@ -1,64 +1,50 @@
-import React, { useState } from 'react';
-import logo_img from './images/logo.png';
-import { HashLink } from 'react-router-hash-link';
-import 'font-awesome/css/font-awesome.min.css';
-import './Navbar.css';
+import React, { useState } from "react";
+import logo_img from "./images/logo.png";
+import { HashLink } from "react-router-hash-link";
+import "./Navbar.css";
+
 const Navbar = () => {
-  const [isActive, setActive] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
 
-  const handleClick = () => {
-    setActive(!isActive);
-  };
-
-  const closeMobileMenu = () => {
-    setActive(false);
-  };
   return (
-    <>
-      <div className="nav-container">
-        <div className="logo">
-          <HashLink to="/#home">
-            <img src={logo_img} alt="om dental clinic logo" />
-          </HashLink>
-          <h2>Dr Gautam's Dental Clinic</h2>
-        </div>
-        <div className={isActive ? 'active_links' : 'links'}>
-          <div className="MenuItems">
-            <HashLink to="/#home" onClick={closeMobileMenu}>
-              Home
-            </HashLink>
-          </div>
-          <div className="MenuItems">
-            <HashLink to="/#about-doctors" onClick={closeMobileMenu}>
-              About
-            </HashLink>
-          </div>
-          <div className="MenuItems">
-            <HashLink to="/#our-services" onClick={closeMobileMenu}>
-              Treatments
-            </HashLink>
-          </div>
-          <div className="MenuItems">
-            <HashLink to="/register" onClick={closeMobileMenu}>
-              Register
-            </HashLink>
-          </div>
-          <div className="MenuItems bgMenu">
-            <HashLink to="/login_user" onClick={closeMobileMenu}>
-              Login
-            </HashLink>
-          </div>
-          <div className="MenuItems bgMenu" id="Appointment_menu">
-            <HashLink to="/login_user" onClick={closeMobileMenu}>
-              Appointment
-            </HashLink>
-          </div>
-        </div>
-        <div className="toggle_menu_icons" onClick={handleClick}>
-          <i className={isActive ? 'fas fa-times' : 'fas fa-bars'}></i>
-        </div>
+    <nav className="navbar">
+      {/* LOGO */}
+      <div className="navbar-logo">
+        <HashLink to="/#home">
+          <img src={logo_img} alt="Dr Gautam Dental Clinic" />
+          <span>Dr Gautam's Dental Clinic</span>
+        </HashLink>
       </div>
-    </>
+
+      {/* LINKS */}
+      <div className={`navbar-links ${menuOpen ? "open" : ""}`}>
+        <HashLink to="/#home" onClick={() => setMenuOpen(false)}>
+          Home
+        </HashLink>
+        <HashLink to="/#about-doctors" onClick={() => setMenuOpen(false)}>
+          About
+        </HashLink>
+        <HashLink to="/#our-services" onClick={() => setMenuOpen(false)}>
+          Treatments
+        </HashLink>
+        <HashLink to="/register" className="btn-outline" onClick={() => setMenuOpen(false)}>
+          Register
+        </HashLink>
+        <HashLink to="/login_user" className="btn-light" onClick={() => setMenuOpen(false)}>
+          Login
+        </HashLink>
+        <HashLink to="/login_user" className="btn-primary" onClick={() => setMenuOpen(false)}>
+          Appointment
+        </HashLink>
+      </div>
+
+      {/* MOBILE MENU ICON */}
+      <div className="menu-toggle" onClick={() => setMenuOpen(!menuOpen)}>
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </nav>
   );
 };
 

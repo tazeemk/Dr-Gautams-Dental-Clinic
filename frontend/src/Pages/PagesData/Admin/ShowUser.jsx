@@ -148,7 +148,8 @@ const ShowUser = () => {
                                 width: '100%',
                                 borderCollapse: 'collapse',
                                 backgroundColor: 'white',
-                                boxShadow: '0 4px 15px rgba(0,0,0,0.1)'
+                                boxShadow: '0 4px 15px rgba(0,0,0,0.1)',
+                                fontSize: '13px'
                             }}>
                                 <thead>
                                     <tr style={{ 

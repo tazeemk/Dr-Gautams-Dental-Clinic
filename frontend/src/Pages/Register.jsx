@@ -42,30 +42,44 @@ const Register = () => {
   };
 
   const handleValidation = () => {
-    const { password, confirmPassword, userName, email, mobileNumber } = user;
+  const { password, confirmPassword, userName, email, mobileNumber } = user;
 
-    if (password !== confirmPassword) {
-      toast.error("Password and confirm password should be same.", toastOptions);
-      return false;
-    }
-    if (userName.length < 3) {
-      toast.error("Enter your full name", toastOptions);
-      return false;
-    }
-    if (password.length < 6) {
-      toast.error("Password should be at least 6 characters", toastOptions);
-      return false;
-    }
-    if (!email) {
-      toast.error("Email is required", toastOptions);
-      return false;
-    }
-    if (!/^\d{10}$/.test(mobileNumber)) {
-      toast.error("Mobile number must be exactly 10 digits", toastOptions);
-      return false;
-    }
-    return true;
-  };
+  // Name validation (letters only)
+  const nameRegex = /^[A-Za-z ]{3,}$/;
+
+  // Mobile: exactly 10 digits
+  const mobileRegex = /^\d{10}$/;
+
+  // Password: exactly 8 digits (same as reset password)
+  const passwordRegex = /^\d{8}$/;
+
+  if (!nameRegex.test(userName)) {
+    toast.error("Name must contain only letters and at least 3 characters", toastOptions);
+    return false;
+  }
+
+  if (!email) {
+    toast.error("Email is required", toastOptions);
+    return false;
+  }
+
+  if (!mobileRegex.test(mobileNumber)) {
+    toast.error("Mobile number must be exactly 10 digits", toastOptions);
+    return false;
+  }
+
+  if (!passwordRegex.test(password)) {
+    toast.error("Password must contain exactly 8 digits", toastOptions);
+    return false;
+  }
+
+  if (password !== confirmPassword) {
+    toast.error("Password and Confirm Password must match", toastOptions);
+    return false;
+  }
+
+  return true;
+};
 
   const PostData = async (e) => {
     e.preventDefault();
@@ -119,13 +133,16 @@ const Register = () => {
             </div>
 
             <input
-              type="text"
-              placeholder="Enter Your Name"
-              name="userName"
-              value={user.userName}
-              onChange={handleInputs}
-              required
-            />
+  type="text"
+  placeholder="Enter Your Name"
+  name="userName"
+  value={user.userName}
+  onChange={(e) => {
+    const value = e.target.value.replace(/[^A-Za-z ]/g, "");
+    setUser({ ...user, userName: value });
+  }}
+  required
+/>
 
             <input
               type="email"
@@ -136,14 +153,19 @@ const Register = () => {
               required
             />
 
-            <input
-              type="number"
-              placeholder="Mobile Number"
-              name="mobileNumber"
-              value={user.mobileNumber}
-              onChange={handleInputs}
-              required
-            />
+           <input
+  type="tel"
+  placeholder="Mobile Number"
+  name="mobileNumber"
+  value={user.mobileNumber}
+  maxLength={10}
+  onChange={(e) => {
+    const value = e.target.value.replace(/\D/g, "");
+    setUser({ ...user, mobileNumber: value });
+  }}
+  required
+/>
+
 
             <input
               type="text"
@@ -154,23 +176,33 @@ const Register = () => {
               required
             />
 
-            <input
-              type="password"
-              placeholder="Password"
-              name="password"
-              value={user.password}
-              onChange={handleInputs}
-              required
-            />
+          <input
+  type="password"
+  placeholder="Password (8 digits)"
+  name="password"
+  value={user.password}
+  maxLength={8}
+  onChange={(e) => {
+    const value = e.target.value.replace(/\D/g, "");
+    setUser({ ...user, password: value });
+  }}
+  required
+/>
 
-            <input
-              type="password"
-              placeholder="Confirm Password"
-              name="confirmPassword"
-              value={user.confirmPassword}
-              onChange={handleInputs}
-              required
-            />
+
+      <input
+  type="password"
+  placeholder="Confirm Password"
+  name="confirmPassword"
+  value={user.confirmPassword}
+  maxLength={8}
+  onChange={(e) => {
+    const value = e.target.value.replace(/\D/g, "");
+    setUser({ ...user, confirmPassword: value });
+  }}
+  required
+/>
+
 
             <button
               className="submit_register_btn"

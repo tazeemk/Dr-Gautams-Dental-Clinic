@@ -109,7 +109,7 @@ const ShowUpcomingAppointment = () => {
                     textAlign: 'center', 
                     color: '#333', 
                     marginBottom: '30px',
-                    fontSize: '28px',
+                    fontSize: '20px',
                     fontWeight: 'bold',
                     background: 'linear-gradient(45deg, #4CAF50, #45a049)',
                     WebkitBackgroundClip: 'text',
@@ -129,7 +129,7 @@ const ShowUpcomingAppointment = () => {
                         borderRadius: '8px',
                         border: '2px dashed #ddd'
                     }}>
-                        <div style={{ fontSize: '48px', marginBottom: '20px' }}>📅</div>
+                        <div style={{ fontSize: '38px', marginBottom: '20px' }}>📅</div>
                         No upcoming appointments found.
                     </div>
                 ) : (
@@ -139,7 +139,9 @@ const ShowUpcomingAppointment = () => {
                                 width: '100%',
                                 borderCollapse: 'collapse',
                                 backgroundColor: 'white',
-                                boxShadow: '0 4px 15px rgba(0,0,0,0.1)'
+                                boxShadow: '0 4px 15px rgba(0,0,0,0.1)',
+                                fontSize: '14px'    
+
                             }}>
                                 <thead>
                                     <tr style={{ 
@@ -200,12 +202,16 @@ const ShowUpcomingAppointment = () => {
                                             }}>
                                                 {appointment.email}
                                             </td>
-                                            <td style={{ 
+                                           <td style={{ 
                                                 padding: '15px', 
                                                 borderRight: '1px solid #eee',
                                                 color: '#666'
-                                            }}>
-                                                {appointment.mobileNumber}
+                                                      }}>
+                                            {appointment.mobileNumber
+                                        ? Number(appointment.mobileNumber).toLocaleString('en-IN', {
+                                              useGrouping: false
+                                                      })
+                                                      : 'N/A'}
                                             </td>
                                             <td style={{ 
                                                 padding: '15px', 
@@ -230,10 +236,9 @@ const ShowUpcomingAppointment = () => {
                                                 fontSize: '12px', 
                                                 color: '#666'
                                             }}>
-                                                {appointment.bookingTiming ? 
-                                                    new Date(appointment.bookingTiming).toLocaleString() : 
-                                                    'N/A'
-                                                }
+                                               {appointment.bookingTiming
+  ? new Date(appointment.bookingTiming).toLocaleString()
+  : 'N/A'}
                                             </td>
                                             <td style={{ 
                                                 padding: '15px', 

@@ -1,5 +1,6 @@
 package com.dgc.api.appointment.service.impl;
 
+import java.time.LocalDateTime;
 import java.time.LocalTime;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,7 +36,7 @@ public class AppointmentServiceImpl implements IAppointmentService {
 	        appointment.setDescription(appointmentRequest.getDescription());
 	        appointment.setTime(appointmentRequest.getTime());
 	        appointment.setUser(user);
-	        appointment.setBookingTiming(LocalTime.now());
+	        appointment.setBookingTiming(LocalDateTime.now());
 
 	        return appointmentRepository.save(appointment);
 	}
